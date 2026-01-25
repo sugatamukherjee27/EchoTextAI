@@ -53,7 +53,7 @@ def _ensure_ffmpeg():
     if shutil.which("ffmpeg") is None:
         raise EnvironmentError("ffmpeg is not installed or not found in PATH.")
 
-def _get_whisper_model():
+def _get_whisper_model(model_size="tiny"):
     global _whisper_model
     if _whisper_model is None:
         _ensure_ffmpeg()
