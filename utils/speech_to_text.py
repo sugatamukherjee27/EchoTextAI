@@ -57,17 +57,17 @@ def _get_whisper_model(model_size="tiny"):
     global _whisper_model
     if _whisper_model is None:
         _ensure_ffmpeg()
-        logger.info("Loading whisper model 'tiny'...")
-        _whisper_model = whisper.load_model("tiny")
+        logger.info(f"Loading whisper model '{model_size}'...")
+        _whisper_model = whisper.load_model(model_size)
     return _whisper_model
 
 
 # Flask calls this
-def convert_to_text(file_path):
+def convert_to_text(file_path, model_size="tiny"):
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
 
-    model = _get_whisper_model()
+    model = _get_whisper_model(model_size)
     logger.info("Transcribing: %s", file_path)
 
     # Faster + lower memory
