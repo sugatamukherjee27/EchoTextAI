@@ -1,8 +1,8 @@
 :root {
-  --primary-purple: #0c9fee;
-  --bg-light: #f8faff;
-  --text-main: #333;
-  --text-muted: #888;
+  --primary-purple: #faef22;;
+  --bg-light: #fdf982;
+  --text-main: #0f172a;    /* Deep Slate Navy */
+  --text-muted: #475569;   /* Muted Gray-Blue */
   --border-color: #eee;
 }
 
@@ -20,19 +20,19 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 20px 5%;
-  background: white;
+  background: #63f529;
   border-bottom: 1px solid var(--border-color);
 }
 
 .back-link {
-  color: var(--primary-purple);
+  color: black;
   text-decoration: none;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .header-title {
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 700;
   color: #222;
 }
@@ -104,12 +104,12 @@ body {
   transition: 0.2s;
 }
 
-.btn-purple { background: var(--primary-purple); color: white; }
+.btn-purple { background: var(--primary-purple); color: rgb(13, 12, 12); }
 .btn-purple:hover { opacity: 0.9; }
 
 .btn-outline-purple {
   background: white;
-  color: var(--primary-purple);
+  color: black;
   border: 1px solid var(--primary-purple);
   width: auto;
   padding: 10px 20px;

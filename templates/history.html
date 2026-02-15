@@ -48,8 +48,8 @@
                     {% for item in records %}
                     <tr>
                         <td class="col-date">
-                            {% if item.created_at %}
-                                {{ item.created_at.strftime('%Y-%m-%d') }}
+                            {% if item.formatted_date %}
+                                {{ item.formatted_date }}
                             {% else %}
                                 N/A
                             {% endif %}

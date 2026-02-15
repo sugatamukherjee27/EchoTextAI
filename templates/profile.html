@@ -11,7 +11,7 @@
 <body>
   <header class="header-nav">
     <a href="{{ url_for('dashboard') }}" class="back-link">← Back to Dashboard</a>
-    <h1 class="header-title">Your Profile</h1>
+    <h1 class="header-title">Profile</h1>
   </header>
 
   <main class="profile-grid">
@@ -94,11 +94,11 @@
         </div>
       </div>
 
-       <div class="danger-zone" style="margin-top: 50px; border-top: 1px solid #ddd; padding-top: 20px;">
+       <div class="danger-zone" style="margin-top: 50px; border-top: 1px solid #101010; padding-top: 20px;">
         <h3 style="color: #de241d;">Account Deletion</h3>
         <p>Once you delete your account, there is no going back. Please be certain.</p>
         <form action="{{ url_for('delete_account') }}" method="POST" onsubmit="return confirm('ARE YOU SURE? This will permanently delete your account and all your history. This action cannot be undone.');">
-            <button type="submit" style="background-color: #ff4d4d; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">
+            <button type="submit" style="background-color: #ff4d4d; color: rgb(227, 224, 224); border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">
                 Delete Account Permanently
             </button>
         </form>

@@ -1,6 +1,6 @@
 body {
     font-family: "Inter", -apple-system, sans-serif;
-    background-color: #f8f9fc;
+    background-color: #fdf982;
     color: #4b5563;
     margin: 0;
     padding: 0;
@@ -24,8 +24,8 @@ body {
 
 .back-link {
     text-decoration: none;
-    color: #0c9fee;
-    font-size: 14px;
+    color: #500a0a;
+    font-size: 22px;
     display: flex;
     align-items: center;
 }
@@ -73,8 +73,8 @@ body {
 }
 
 .clear-all-btn {
-    background: transparent;
-    color: #ef4444;
+    background: rgb(229, 38, 38);
+    color: #f9f7f7;
     border: 1px solid #fecaca;
     padding: 10px 20px;
     border-radius: 8px;
@@ -83,7 +83,7 @@ body {
 }
 
 .clear-all-btn:hover {
-    background: #fef2f2;
+    background: #ea1313;
 }
 
 /* Table Design */

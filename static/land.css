@@ -1,8 +1,8 @@
 :root {
     /* Updated to a more professional Royal Blue and Slate palette */
-    --primary-blue: #0c9fee;
-    --primary-hover: #1d4ed8;
-    --bg-light: #f8fafc;
+    --primary-blue: #f4f43d;
+    --primary-hover: #faef22;
+    --bg-light: #fdf982;
     --text-main: #0f172a;    /* Deep Slate Navy */
     --text-muted: #475569;   /* Muted Gray-Blue */
     --border-color: #e2e8f0; /* Soft light border */
@@ -28,7 +28,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 20px 5%;
-    background-color: #70f3f3; /* Matching your teal color */
+    background-color: #63f529; /* Matching your teal color */
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
@@ -87,14 +87,14 @@ body {
 
 .btn-signin {
     background: var(--primary-blue);
-    color: white !important;
+    color: rgb(14, 14, 12) !important;
     padding: 8px 20px;
     border-radius: 6px;
     transition: background 0.2s;
 }
 
 .btn-signin:hover {
-    background: var(--primary-hover);
+    background: #e4f529;
 }
 
 /* Hero Section */
@@ -120,7 +120,7 @@ body {
 
 .btn-purple {
     background: var(--primary-blue); /* Renamed logically to blue */
-    color: white;
+    color: rgb(207, 25, 25);
     text-decoration: none;
     padding: 16px 36px;
     border-radius: 8px;
@@ -149,7 +149,7 @@ body {
     font-size: 28px;
     margin-bottom: 48px;
     font-weight: 800;
-    color: var(--text-main);
+    color: #0e0e0e;
 }
 
 .grid-container {
@@ -170,12 +170,12 @@ body {
 .info-card:hover {
     border-color: var(--primary-blue);
     transform: translateY(-4px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 10px 25px -5px rgba(192, 74, 74, 0.05);
 }
 
 .card-title {
     display: block;
-    color: var(--primary-blue);
+    color: #101110;
     font-weight: 700;
     font-size: 18px;
     margin-bottom: 12px;
@@ -185,7 +185,7 @@ body {
     display: block;
     font-weight: 700;
     font-size: 18px;
-    color: var(--text-main);
+    color: #101110;
     margin-bottom: 12px;
 }
 
@@ -199,7 +199,7 @@ body {
 .footer {
     text-align: center;
     padding: 40px 20px;
-    background: #72f7f0; /* Replaced yellow with white */
+    background: #63f529; /* Replaced yellow with white */
     border-top: 1px solid var(--border-color);
     font-size: 18px;
     color: var(--text-muted);

@@ -1,5 +1,5 @@
 body {
-    background-color: var(--bg-light);
+    background-color: #d0f529;
     font-family: 'Arial', Tahoma, Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
@@ -9,7 +9,7 @@ body {
 }
 
 .form-container {
-    background: #f9f4f4;
+    background: #a4ef87;
     padding: 2px 45px;
     border-radius: 12px;
     box-shadow: 0 10px 25px rgba(18, 17, 17, 0.793);
@@ -18,7 +18,7 @@ body {
 }
 
 .main-title {
-    color: #0c9fee;
+    color: #080807;
     text-align: center;
     font-size: 28px;
     font-weight: 800;
@@ -27,7 +27,7 @@ body {
 
 .subtitle {
     text-align: center;
-    color: #777;
+    color: #101010;
     font-size: 14px;
     margin-bottom: 30px;
 }
@@ -40,7 +40,7 @@ body {
     display: block;
     font-size: 12px;
     font-weight: 600;
-    color: #666;
+    color: #0f0f0f;
     margin-bottom: 8px;
     text-transform: uppercase;
 }
@@ -57,7 +57,7 @@ body {
 
 .input-group input:focus {
     outline: none;
-    border-color: #0c9fee;
+    border-color: #faef22;
 }
 
 .row {
@@ -68,8 +68,8 @@ body {
 
 .btn-primary {
     width: 100%;
-    background-color: #0c9fee;
-    color: white;
+    background-color:#faef22;
+    color: rgb(14, 14, 12);
     padding: 14px;
     border: none;
     border-radius: 8px;
@@ -83,11 +83,11 @@ body {
     text-align: center;
     margin-top: 25px;
     font-size: 14px;
-    color: #444;
+    color: #0b0b0b;
 }
 
 .footer-link a {
-    color: #0c9fee;
+    color: #180cf0;
     text-decoration: none;
     font-weight: 600;
 }

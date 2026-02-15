@@ -1,8 +1,8 @@
 :root {
     /* Synced with land.css palette */
-    --primary-blue: #0c9fee;
-    --primary-hover: #0c9fee;
-    --bg-light: #f8fafc;
+    --primary-blue: #f4f43d;
+    --primary-hover: #faef22;
+    --bg-light: #fdf982;
     --text-main: #0f172a;    /* Deep Slate Navy */
     --text-muted: #475569;   /* Muted Gray-Blue */
     --border-color: #e2e8f0; /* Soft light border */
@@ -25,7 +25,7 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 16px 5%;
-    background: #26e5f3; /* Removed rgb(231, 244, 82) */
+    background: #63f529; /* Removed rgb(231, 244, 82) */
     border-bottom: 1px solid var(--border-color);
     position: sticky;
     top: 0;
@@ -239,7 +239,7 @@ textarea {
     width: 100%;
     padding: 14px;
     background: var(--primary-blue);
-    color: white;
+    color: rgb(13, 12, 12);
     border: none;
     border-radius: 8px;
     font-weight: 700;
@@ -255,8 +255,8 @@ textarea {
 }
 
 .btn-secondary {
-    background: #eff6ff; /* Very light blue tint */
-    color: var(--primary-blue);
+    background: #95e42e; /* Very light blue tint */
+    color: #0f0f0f;;
     border: none;
     padding: 8px 16px;
     border-radius: 20px;
@@ -277,7 +277,7 @@ textarea {
 
 .placeholder-text {
     text-align: center;
-    color: var(--text-muted);
+    color: black;
     max-width: 250px;
     font-size: 14px;
 }
