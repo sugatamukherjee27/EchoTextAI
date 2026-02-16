@@ -1,22 +1,7 @@
-# Web Framework and Utilities
-https://download.pytorch.org/whl/cpu/torch_stable.html
-torch==2.2.0+cpu
 Flask
 python-dotenv
 Werkzeug
-
-# Database
 supabase
-
-# Document Generation
 reportlab
 python-docx
-
-# AI/ML & Audio Processing
-openai-whisper
-torch
-numpy
-
-# Transcription & Processing dependencies (often used in utils)
-librosa
-soundfile
+huggingface_hub

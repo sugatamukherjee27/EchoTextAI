@@ -269,49 +269,6 @@ def upload():
         flash("Processing failed. Please try again.")
         return redirect(url_for("dashboard"))
 
-    # try:
-    #     if file and file.filename:
-    #         # File processing remains local
-    #         filename = secure_filename(file.filename)
-    #         unique_name = f"{uuid.uuid4().hex}_{filename}"
-    #         path = os.path.join(app.config["UPLOAD_FOLDER"], unique_name)
-    #         file.save(path) 
-
-    #         text = convert_to_text(path)
-    #         input_type = "audio"
-    #     elif user_prompt:
-    #         text = user_prompt
-    #         input_type = "prompt"
-    #     else:
-    #         flash("No input provided")
-    #         return redirect(url_for("dashboard"))
-            
-    #     result = generate_output(text, output_type)
-
-    #     # Save to Supabase
-    #     history_data = {
-    #         "user_id": session["user_id"],
-    #         "input_type": input_type,
-    #         "input_text": text,
-    #         "output_text": result,
-    #         "output_type": output_type
-    #     }
-        
-    #     # Supabase returns the inserted data including the ID
-    #     response = supabase.table("history").insert(history_data).execute()
-    #     new_id = response.data[0]['id']
-
-    #     session["last_history_id"] = new_id
-    #     session["selected"] = output_type
-    #     return redirect(url_for("dashboard"))
-
-    # except Exception as e:
-    #     logger.error(f"Processing error: {e}")
-    #     flash("Processing failed. Please try again.")
-    #     return redirect(url_for("dashboard"))
-
-    
-
 # --- HISTORY ---
 @app.route("/history")
 @login_required
