@@ -236,7 +236,11 @@ def upload():
             path = os.path.join(app.config["UPLOAD_FOLDER"], unique_name)
             file.save(path) 
 
-            text = convert_to_text(path)
+            try:
+                text = convert_to_text(path)
+            except RuntimeError as e:
+                flash("AI model is starting, please retry in 10 seconds.")
+                return redirect(url_for("dashboard"))
             ext = filename.rsplit(".", 1)[1].lower() if "." in filename else ""
             input_type = "video" if ext in VIDEO_EXTENSIONS else "audio"
                 
