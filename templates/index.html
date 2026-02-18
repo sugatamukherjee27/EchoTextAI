@@ -5,6 +5,15 @@
     <title>EchoText AI | Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+
+    <script>
+    // Force a page reload if the user arrives here via the back button
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+            window.location.reload();
+        }
+    });
+    </script>
 </head>
 <body>
 

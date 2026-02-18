@@ -6,6 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='profile.css') }}">
+  
+  <script>
+    // Force a page reload if the user arrives here via the back button
+    window.addEventListener('pageshow', function(event) {
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+            window.location.reload();
+        }
+    });
+  </script>
+  
 </head>
 
 <body>
@@ -18,7 +28,7 @@
     <aside class="sidebar-card">
       <div class="avatar-container">
         {% if profile_image %}
-          <img src="{{ url_for('static', filename='uploads/' ~ profile_image) }}" alt="Profile Picture" class="profile-img">
+          <img src="{{ url_for('static', filename='uploads/' ~ profile_image) }}" class="profile-img">
         {% else %}
           <div class="profile-img-placeholder"><i class='bx bx-user'></i></div>
         {% endif %}

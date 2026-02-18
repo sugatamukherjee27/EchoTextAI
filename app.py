@@ -27,10 +27,6 @@ from utils.ai_summarizer import generate_output
 # ---------------- CONFIGURATION ----------------
 load_dotenv()
 
-SUPABASE_URL = os.getenv("SUPABASE_URL")
-SUPABASE_KEY = os.getenv("SUPABASE_KEY")
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
-
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
@@ -90,8 +86,6 @@ def handle_file_too_large(e):
 
 @app.route("/")
 def landing():
-    if "user_id" in session:
-        return redirect(url_for("dashboard"))
     return render_template("land.html")
 
 # --- AUTHENTICATION ---
@@ -179,10 +173,23 @@ def login():
 
     return render_template("login.html")
 
+# --- Updated Logout Route ---
 @app.route("/logout")
 def logout():
     session.clear()
-    return redirect(url_for("landing"))
+    flash("You have been logged out.")
+
+    response = redirect(url_for("landing"))
+
+    # Kill browser history caching
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
+    response.headers["Pragma"] = "no-cache"
+    response.headers["Expires"] = "0"
+
+    # VERY IMPORTANT: force new navigation context
+    response.headers["Clear-Site-Data"] = '"cache", "cookies", "storage"'
+
+    return response
 
 # --- DASHBOARD & PROCESS ---
 @app.route("/dashboard")
@@ -220,24 +227,18 @@ def upload():
     
     text = None
     input_type = None
+    path = None # Track path for cleanup
 
     try:
         if file and file.filename:
             filename = secure_filename(file.filename)
-            ext = filename.rsplit(".", 1)[1].lower() if "." in filename else ""
-            
             unique_name = f"{uuid.uuid4().hex}_{filename}"
             path = os.path.join(app.config["UPLOAD_FOLDER"], unique_name)
             file.save(path) 
 
-            # Transcribe the file (convert_to_text should handle both audio/video)
             text = convert_to_text(path)
-            
-            # Identify the input type based on extension
-            if ext in VIDEO_EXTENSIONS:
-                input_type = "video"
-            else:
-                input_type = "audio"
+            ext = filename.rsplit(".", 1)[1].lower() if "." in filename else ""
+            input_type = "video" if ext in VIDEO_EXTENSIONS else "audio"
                 
         elif user_prompt:
             text = user_prompt
@@ -246,9 +247,12 @@ def upload():
             flash("No input provided")
             return redirect(url_for("dashboard"))
             
+        if not text:
+            raise ValueError("Failed to extract text from input.")
+
         result = generate_output(text, output_type)
 
-    # Save to Supabase (Database uses the input_type variable)
+        # Save to Supabase
         history_data = {
             "user_id": session["user_id"],
             "input_type": input_type,
@@ -258,16 +262,21 @@ def upload():
         }
         
         response = supabase.table("history").insert(history_data).execute()
-        new_id = response.data[0]['id']
-
-        session["last_history_id"] = new_id
-        session["selected"] = output_type
+        if response.data:
+            session["last_history_id"] = response.data[0]['id']
+            session["selected"] = output_type
+        
         return redirect(url_for("dashboard"))
 
     except Exception as e:
         logger.error(f"Processing error: {e}")
-        flash("Processing failed. Please try again.")
+        flash(f"Error: {str(e)}")
         return redirect(url_for("dashboard"))
+    
+    finally:
+        # CLEANUP: Delete the file after processing to save disk space
+        if path and os.path.exists(path):
+            os.remove(path)
 
 # --- HISTORY ---
 @app.route("/history")
@@ -533,9 +542,12 @@ def delete_account():
 # ---------------- CACHE CONTROL ----------------
 @app.after_request
 def add_header(response):
-    response.headers["Cache-Control"] = "no-cache, no-store, must-revalidate"
+    """
+    Stops the browser from storing sensitive dashboard snapshots in its history.
+    """
+    response.headers["Cache-Control"] = "no-store, no-cache, must-revalidate, max-age=0"
     response.headers["Pragma"] = "no-cache"
-    response.headers["Expires"] = "0"
+    response.headers["Expires"] = "-1"
     return response
 
 # ---------------- ENTRY POINT ----------------

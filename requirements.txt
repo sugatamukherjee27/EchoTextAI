@@ -1,7 +1,20 @@
 Flask
+gunicorn
 python-dotenv
-Werkzeug
 supabase
 reportlab
 python-docx
-huggingface_hub
+Werkzeug
+
+# AI speech-to-text
+openai-whisper
+torch
+numpy
+
+# HTTP LLM API
+requests
+
+# audio processing dependencies (required by whisper internally)
+ffmpeg-python
+soundfile
+pydub

@@ -5,6 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log in | AI NoteGen</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='login.css') }}">
+
+    <script>
+    (function () {
+
+        // If coming from logout -> block backward navigation
+        window.history.pushState(null, "", window.location.href);
+
+        window.onpopstate = function () {
+            window.location.replace("/");
+        };
+
+    })();
+    </script>
+
 </head>
 <body>
 
@@ -34,10 +48,6 @@
             </div>
 
             <button type="submit" class="btn-primary">Sign in</button>
-
-            <!-- <div class="footer-link">
-                <p>New to AI NoteGen? <a href="/register">Register now</a></p>
-            </div> -->
             <div class="footer-link">
                 <p>New to AI NoteGen? <a href="{{ url_for('register') }}">Register now</a></p>
             </div>

@@ -5,6 +5,21 @@
     <title>EchoText AI | Turn Your Voice into Text with EchoText AI.</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='land.css') }}">
+
+    <script>
+    (function () {
+
+        // Detect if user came from a protected page
+        if (performance.navigation.type === 2 || window.history.length > 1) {
+            window.history.pushState(null, "", window.location.href);
+            window.onpopstate = function () {
+                window.location.replace("/");
+            };
+        }
+
+    })();
+    </script>
+
 </head>
 <body>
 
@@ -43,7 +58,7 @@
         <h1>Transform Audio, Video, or Prompts into AI Insights.</h1>
         <p>Instantly generate highly accurate notes, summaries, quizzes, or flashcards. Upload your recordings or type a prompt to get editable results in minutes.</p>
         <div class="hero-action">
-            <a href="{{ url_for('register') }}" class="btn-purple">Start Transcribing Now</a>
+            <a href="{{ url_for('dashboard') }}" class="btn-purple">Start Transcribing Now</a>
         </div>
     </section>
 
