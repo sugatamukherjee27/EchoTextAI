@@ -8,7 +8,7 @@ Werkzeug
 
 # AI speech-to-text
 openai-whisper
-numpy
+numpy==1.26.4
 
 --extra-index-url https://download.pytorch.org/whl/cpu
 torch==2.2.2+cpu
