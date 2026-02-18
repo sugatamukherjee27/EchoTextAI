@@ -12,7 +12,7 @@ def _ensure_ffmpeg():
     if shutil.which("ffmpeg") is None:
         raise EnvironmentError("ffmpeg is not installed or not found in PATH.")
 
-def _get_whisper_model(model_name="base"):
+def _get_whisper_model(model_name="tiny"):
     global _whisper_model
     if _whisper_model is None:
         _ensure_ffmpeg()
@@ -22,7 +22,7 @@ def _get_whisper_model(model_name="base"):
 
 
 # Flask calls this
-def convert_to_text(file_path, model_name="base"):
+def convert_to_text(file_path, model_name="tiny"):
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"File not found: {file_path}")
 

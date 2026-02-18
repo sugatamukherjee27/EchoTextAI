@@ -8,8 +8,10 @@ Werkzeug
 
 # AI speech-to-text
 openai-whisper
-torch
 numpy
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.2.2+cpu
 
 # HTTP LLM API
 requests
