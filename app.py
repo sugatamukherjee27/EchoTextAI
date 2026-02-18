@@ -554,7 +554,3 @@ def add_header(response):
     response.headers["Expires"] = "-1"
     return response
 
-# # ---------------- ENTRY POINT ----------------
-# if __name__ == "__main__":
-#     _get_whisper_model("tiny")
-#     app.run(debug=True)
